@@ -1,6 +1,8 @@
 package it.polito.tdp.meteo.DAO;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import it.polito.tdp.meteo.model.Rilevamento;
 
@@ -27,6 +29,10 @@ public class TestMeteoDAO {
 //		System.out.println(dao.getAvgRilevamentiLocalitaMese(5, "Torino"));
 		
 
+		Map<String, Double> umidita= new HashMap<>(dao.getUmiditaMediaPerMese(1));
+		for (String s: umidita.keySet()) {
+    	 System.out.println( s+" umidita' media: "+umidita.get(s)+"\n");
+    	}
 	}
 
 }
