@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.ResourceBundle;
 
+import it.polito.tdp.meteo.model.Citta;
 import it.polito.tdp.meteo.model.Model;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -54,6 +55,13 @@ public class FXMLController {
 
     @FXML
     void doCalcolaSequenza(ActionEvent event) {
+    	txtResult.clear(); 
+    	int mese= this.boxMese.getValue(); 
+    	List<Citta> lista = this.model.trovaSequenza(mese);
+    	
+    	for (Citta c : lista) {
+    		txtResult.appendText(c.getNome()+"\n");
+    	}
 
     }
 
