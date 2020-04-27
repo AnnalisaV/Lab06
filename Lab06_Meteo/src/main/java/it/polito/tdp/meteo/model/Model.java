@@ -38,8 +38,9 @@ public class Model {
 	 */
 	public List<Citta> trovaSequenza(int mese) {
 		
-		this.soluzioneMigliore=null; // così ad ogni nuova ricorsion e' 'pulita'
 		List<Citta> parziale= new ArrayList<>(); // soluzione parziale da comporre durante la ricorsione
+		this.soluzioneMigliore=null; // così ad ogni nuova ricorsion e' 'pulita'
+		
 		
 		// per ogni localita del db popolo la sua lista dei rilevamenti per quel mese specifico
 		for (Citta c : tutteLeCitta) {
@@ -93,7 +94,7 @@ public class Model {
 		int count=0; // contatore di quante volte quella citta sta gia' li dentro
 		
 		for (Citta citta : parziale) {
-			if(citta.getNome().equals(c.getNome())) {
+			if(citta.equals(c)) {
 				count++; 
 			}
 		}
@@ -104,9 +105,7 @@ public class Model {
 			
 			// se e' il primo o il secondo giorno deve essere la stessa citta
 			if (parziale.size()==1 || parziale.size()==2) {
-				if (parziale.get(parziale.size()-1).equals(c))
-					return true; 
-				else return false; 
+				return parziale.get(parziale.size()-1).equals(c);
 			}
 			
 			// ora posso rimanere per i successivi ai primi tre giorni
@@ -144,7 +143,7 @@ public class Model {
 			}
 		
 		// quante volte mi sono spostato di citta?
-		for (int i=1; i<=15; i++ ) { // non potrei farlo con foreach perche' ho bisogno degli indici
+		for (int i=1; i<15; i++ ) { // non potrei farlo con foreach perche' ho bisogno degli indici
 			// se quella Citta non e' la stessa del 'giorno' prima
 			// mi sono spostato ed aggiungo 100
 			if (!parziale.get(i).equals(parziale.get(i-1))) {
