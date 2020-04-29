@@ -68,6 +68,7 @@ public class Model {
 			if (this.soluzioneMigliore == null || calcolaCosto(parziale)<calcolaCosto(this.soluzioneMigliore)) {
 				this.soluzioneMigliore= new ArrayList<Citta>(parziale); 
 			}
+			return;
 		}
 		
 		//caso generale 
